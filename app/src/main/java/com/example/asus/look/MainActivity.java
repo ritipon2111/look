@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int intNumber = 3;
                 changePlay(intNumber);
-                myRandomPicture();
+                myRandomPicture(3);
             }
         });
     } //  scissorControltor
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int intNumber = 2;
                 changePlay(intNumber);
-                myRandomPicture();
+                myRandomPicture(2);
 
 
 
@@ -80,20 +80,76 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int intNumber = 1;
                 changePlay(intNumber);
-                myRandomPicture();
+                myRandomPicture(1);
             }
         });
 
     } // paperControltor
 
-    private void myRandomPicture() {
+    private void myRandomPicture(int intUser) {
 
         int intMyRandom = 0;
         Random objRandom = new Random();
         intMyRandom = objRandom.nextInt(3) +1;
         Log.d("Ran","intMyRandom ==> " + intMyRandom);
         androidChange(intMyRandom);
+        checkScore(intUser, intMyRandom);
+
     }// myRandomPicture
+
+    private void checkScore(int intUser, int intMyRandom) {
+        String strWin = "โอ้โหเก่งจัง ชนะเถอะ";
+        String strLost = "ไปฝึกมาใหม่น่ะน้อง";
+        String strDrew = "ไม่น่าเลย น่าแม่นนน";
+        String strShow = null;
+
+        //1 ==>กระดาษ,//2 ==> ค้อน,//3 ==> กรรไกร
+        switch (intUser) {
+            case 1: //กระดาษ
+                switch (intMyRandom) {
+                    case 1:
+                        strShow = strDrew;
+                        break;
+                    case 2:
+                        strShow = strWin;
+                        break;
+                    case 3:
+                        strShow = strLost;
+                        break;
+                }
+                break;
+            case 2: //ค้อน
+                switch (intMyRandom) {
+                    case 1:
+                        strShow = strLost;
+                        break;
+                    case 2:
+                        strShow = strDrew;
+                        break;
+                    case 3:
+                        strShow = strWin;
+                        break;
+                }
+                break;
+            case 3://กรรไกร
+                switch (intMyRandom) {
+                    case 1:
+                        strShow = strWin;
+                        break;
+                    case 2:
+                        strShow = strLost;
+                        break;
+                    case 3:
+                        strShow = strDrew;
+                        break;
+                }
+                break;
+
+
+        } // switch
+        showTextView.setText(strShow);
+
+    }//checkScore
 
     private void androidChange(int intMyRandom) {
         int[] intSourceImage = new int[4];

@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 int intNumber = 2;
                 changePlay(intNumber);
                 myRandomPicture();
+
             }
         });
     } // rockControltor

@@ -104,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
         String strShow = null;
         int[] intSound = new int[3];
         intSound[0] = R.raw.cow;
+        intSound[1] = R.raw.cow;
+        intSound[2] = R.raw.cow;
+        int showsound = R.raw.cow;
+
 
         //1 ==>กระดาษ,//2 ==> ค้อน,//3 ==> กรรไกร
         switch (intUser) {
@@ -111,12 +115,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (intMyRandom) {
                     case 1:
                         strShow = strDrew;
+                        showsound = R.raw.effect_btn_long;
                         break;
                     case 2:
                         strShow = strWin;
+                        showsound = R.raw.lose;
                         break;
                     case 3:
                         strShow = strLost;
+                        showsound = R.raw.win;
                         break;
                 }
                 break;
@@ -124,12 +131,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (intMyRandom) {
                     case 1:
                         strShow = strLost;
+                        showsound = R.raw.win;
                         break;
                     case 2:
                         strShow = strDrew;
+                        showsound = R.raw.effect_btn_long;
                         break;
                     case 3:
                         strShow = strWin;
+                        showsound = R.raw.lose;
                         break;
                 }
                 break;
@@ -137,12 +147,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (intMyRandom) {
                     case 1:
                         strShow = strWin;
+                        showsound = R.raw.lose;
                         break;
                     case 2:
                         strShow = strLost;
+                        showsound = R.raw.win;
                         break;
                     case 3:
                         strShow = strDrew;
+                        showsound = R.raw.effect_btn_long;
                         break;
                 }
                 break;
@@ -150,6 +163,8 @@ public class MainActivity extends AppCompatActivity {
 
         } // switch
         showTextView.setText(strShow);
+        MediaPlayer cakeMediaPlayer = MediaPlayer.create(getBaseContext(), showsound);
+        cakeMediaPlayer.start();
 
     }//checkScore
 
